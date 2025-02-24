@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_machine_test_products/utils/colors.dart';
+import 'package:flutter_machine_test_products/view/product_view.dart';
 import 'package:flutter_machine_test_products/widgets/custom_button.dart';
 import 'package:flutter_machine_test_products/widgets/custom_textfield_with_label.dart';
 
@@ -78,7 +79,12 @@ class LoginView extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      if (formKey.currentState!.validate()) {}
+                      // if (formKey.currentState!.validate()) {}
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductListView(),
+                          ));
                     },
                     child: CustomcoloredButton(
                       text: 'LOGIN',

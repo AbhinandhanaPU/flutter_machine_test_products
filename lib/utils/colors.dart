@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   // Primary Colors
   static const Color lightPrimary = Color(0xfffbc6e4);
-  static const Color darkPrimary = Color(0xff9895ed);
+  static const Color darkPrimary = Color.fromARGB(255, 127, 124, 237);
 
   // Common Colors
   static const Color whiteColor = Colors.white;
@@ -12,5 +12,5 @@ class AppColors {
   static const Color errorColor = Colors.red;
 
   // Additional Colors
-  static const Color lightGrey = Color(0xffB3B3B3);
+  static const Color lightGrey = Color.fromARGB(255, 239, 239, 239);
 }
