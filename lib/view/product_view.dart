@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_machine_test_products/utils/colors.dart';
+import 'package:flutter_machine_test_products/view/product_update_view.dart';
 
 class ProductListView extends StatelessWidget {
   const ProductListView({super.key});
@@ -75,7 +76,14 @@ class ProductListView extends StatelessWidget {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            ProductUpdateView(),
+                                      ));
+                                },
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
                                     horizontal: 10,

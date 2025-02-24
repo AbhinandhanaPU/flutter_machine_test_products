@@ -77,7 +77,10 @@ class LoginView extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  GestureDetector(
+                  CustomcoloredButton(
+                    text: 'LOGIN',
+                    height: 60,
+                    width: double.infinity,
                     onTap: () {
                       // if (formKey.currentState!.validate()) {}
                       Navigator.push(
@@ -86,11 +89,6 @@ class LoginView extends StatelessWidget {
                             builder: (context) => ProductListView(),
                           ));
                     },
-                    child: CustomcoloredButton(
-                      text: 'LOGIN',
-                      height: 60,
-                      width: double.infinity,
-                    ),
                   )
                 ],
               ),
