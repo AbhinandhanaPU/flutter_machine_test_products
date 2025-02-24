@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_machine_test_products/controllers/login_controller.dart';
 import 'package:flutter_machine_test_products/utils/colors.dart';
-import 'package:flutter_machine_test_products/view/product_view.dart';
 import 'package:flutter_machine_test_products/widgets/custom_button.dart';
 import 'package:flutter_machine_test_products/widgets/custom_textfield_with_label.dart';
+import 'package:provider/provider.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
@@ -10,6 +11,8 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loginController = Provider.of<LoginController>(context);
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -54,7 +57,7 @@ class LoginView extends StatelessWidget {
                     text: 'Username',
                     hintText: 'Account Username',
                     prefixIcon: Icon(Icons.person),
-                    controller: TextEditingController(),
+                    controller: loginController.usernameController,
                     validator: (fieldContent) {
                       if (fieldContent == null || fieldContent.isEmpty) {
                         return "Field is mandatory";
@@ -66,7 +69,7 @@ class LoginView extends StatelessWidget {
                     text: 'Password',
                     hintText: 'Account Password',
                     prefixIcon: Icon(Icons.password),
-                    controller: TextEditingController(),
+                    controller: loginController.passwordController,
                     validator: (fieldContent) {
                       if (fieldContent == null || fieldContent.isEmpty) {
                         return "Field is mandatory";
@@ -77,19 +80,24 @@ class LoginView extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  CustomcoloredButton(
-                    text: 'LOGIN',
-                    height: 60,
-                    width: double.infinity,
-                    onTap: () {
-                      // if (formKey.currentState!.validate()) {}
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProductListView(),
-                          ));
-                    },
-                  )
+                  loginController.isLoading
+                      ? CircularProgressIndicator()
+                      : CustomcoloredButton(
+                          text: 'LOGIN',
+                          height: 60,
+                          width: double.infinity,
+                          onTap: () {
+                            if (formKey.currentState!.validate()) {
+                              loginController.login(context);
+                            }
+
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => ProductListView(),
+                            //     ));
+                          },
+                        ),
                 ],
               ),
             ),
